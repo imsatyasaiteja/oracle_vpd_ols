@@ -87,7 +87,7 @@ LSNRCTL> start
 
 Listener runs on:
 
-* **Host**: cs5322-1-i.comp.nus.edu.sg
+* **Host**: cs5322.comp.nus.edu.sg
 * **Port**: 1521
 
 ---
