@@ -2,18 +2,36 @@
 
 ## Overview
 
-This project demonstrates a **defense-in-depth database security architecture** for a Judicial Database Management System (JDMS) using **Oracle Database 23ai**.
+This project demonstrates a **defense-in-depth database security architecture** for a Judicial Database Management System (JDMS) using **Oracle Database 23ai**
+
 The system combines:
 
 - **Discretionary Access Control (DAC)** via Oracle roles
 - **Mandatory Access Control (MAC)** via Oracle Label Security (OLS)
 - **Row-level filtering** via Virtual Private Database (VPD)
 
-The objective is to ensure that **judicial data confidentiality, integrity, and least-privilege access** are enforced *inside the database*, independent of application logic.
+The objective is to ensure that **judicial data confidentiality, integrity, and least-privilege access** are enforced *inside the database*, independent of application logic
 
 The design follows the **Bell-LaPadula model**:
 - **No Read Up**
 - **No Write Down**
+
+---
+
+## Data Model and ER Diagram
+
+The ER Diagram has five entities in total. Figure below represents the entities, attributes and relationship between them. 
+</br></br>
+
+<img src="/images/ER_diagram.png" width="70%"/>
+
+### Core Entities
+
+- Users: Stores all judicial users and their functional roles
+- Cases: Central table containing case metadata and classification
+- Witness: Stores witness information (always SEALED)
+- Evidence: Stores evidence records (always SEALED)
+- Access Log: Automatically records all access attempts for auditability
 
 ---
 
@@ -32,7 +50,7 @@ Security is enforced at **three independent layers**:
 ### 1. SSH Access to Oracle VM
 
 ```bash
-ssh oracle@cs5322-1-i.comp.nus.edu.sg
+ssh oracle@cs5322.comp.nus.edu.sg
 ```
 
 > If connecting outside SoC, connect via **SoC VPN** first.
@@ -163,20 +181,6 @@ This script:
 
 ---
 
-## Data Model and ER Diagram
-
-<img src="/images/ER_diagram.png" width="90%"/>
-
-### Core Entities
-
-- Users: Stores all judicial users and their functional roles
-- Cases: Central table containing case metadata and classification
-- Witness: Stores witness information (always SEALED)
-- Evidence: Stores evidence records (always SEALED)
-- Access Log: Automatically records all access attempts for auditability
-
----
-
 ## Clearance Levels (OLS)
 
 | Level | Label        | Description             |
@@ -240,7 +244,7 @@ Clerks **cannot access**:
   * `WITNESS`
   * `EVIDENCE`
 
-<img src="/images/access_labels.png" width="90%"/>
+<img src="/images/access_labels.png" width="70%"/>
 
 ### Enforcement
 
@@ -271,7 +275,7 @@ This works **in addition to OLS**, not instead of it.
 @test_clerk3_example.sql
 ```
 
-<img src="/images/test_clerk3.jpeg" width="90%"/>
+<img src="/images/test_clerk3.jpeg" width="70%"/>
 
 Expected results:
 
