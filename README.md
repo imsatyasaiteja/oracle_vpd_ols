@@ -19,8 +19,6 @@ The design follows the **Bell-LaPadula model**:
 
 ## High-Level Architecture
 
-![System Overview](images/overview.jpeg)
-
 Security is enforced at **three independent layers**:
 
 1. **DAC** - defines what tables a role may access
@@ -167,33 +165,15 @@ This script:
 
 ## Data Model and ER Diagram
 
-![ER Diagram](images/overview.jpeg)
+<img src="/images/ER_diagram.png" width="90%"/>
 
 ### Core Entities
 
-#### USERS
-
-Stores all judicial users and their functional roles.
-
-#### CASES
-
-Central table containing case metadata and classification.
-
-#### WITNESS
-
-Stores witness information (always SEALED).
-
-#### EVIDENCE
-
-Stores evidence records (always SEALED).
-
-#### ACCESS_LOG
-
-Automatically records all access attempts for auditability.
-
-![Cases Table](images/cases_table.jpeg)
-![Evidence Table](images/evidence_table.jpeg)
-![Access Log](images/access_log_table.jpeg)
+- Users: Stores all judicial users and their functional roles
+- Cases: Central table containing case metadata and classification
+- Witness: Stores witness information (always SEALED)
+- Evidence: Stores evidence records (always SEALED)
+- Access Log: Automatically records all access attempts for auditability
 
 ---
 
@@ -260,7 +240,7 @@ Clerks **cannot access**:
   * `WITNESS`
   * `EVIDENCE`
 
-![Access Labels](images/access_labels.png)
+<img src="/images/access_labels.png" width="90%"/>
 
 ### Enforcement
 
@@ -291,7 +271,7 @@ This works **in addition to OLS**, not instead of it.
 @test_clerk3_example.sql
 ```
 
-![Clerk Test](images/test_clerk3.jpeg)
+<img src="/images/test_clerk3.jpeg" width="90%"/>
 
 Expected results:
 
